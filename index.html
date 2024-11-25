@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peddy</title>
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- connecting Daisy UI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="lato-regular">
+    <nav class="w-11/12 mx-auto mb-24">
+        <div class="navbar bg-base-100 items-center">
+            <div class="navbar-start">
+
+                <!-- Hamburger start -->
+                <!-- Hamburger end -->
+                <span><img src="images/logo.webp" alt=""></span>
+                <a class="mx-2 text-2xl font-extrabold">Peddy</a>
+            </div>
+            <div class="navbar-center lg:flex hidden lg:block">
+                <ul class="menu menu-horizontal px-1">
+                    <li><a>Home</a></li>
+                    <li><a>Shop </a></li>
+                    <li><a>Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="lg:hidden block lg:ms-0 ms-10 ">
+                <img src="https://img.icons8.com/?size=30&id=S5biqohaDgd1&format=png" alt="" >
+            </div>
+
+            <div class="navbar-end">
+                <img src="https://img.icons8.com/?size=48&id=JOzPdFXJKESy&format=png" alt="" width="36px" height="36px"
+                    class="cursor-pointer">
+            </div>
+        </div>
+
+
+        <div class="text-center w-full lg:w-1/2 mx-auto space-y-6 mt-12">
+            <span class="font-bold text-xl lg:text-2xl text-slate-500">Bringing Families Together ❤️</span>
+            <h2 class="lg:text-7xl text-5xl">Your Path to Adoption <br>Starts Here</h2>
+            <p class="text-base text-slate-800 font-normal">It is a long established fact that a reader will be
+                distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum
+                is that it has a.</p>
+            <button class="btn bg-teal-700 text-white"><a href="#adopti-your-friend">View More</a></button>
+
+            <div class="mx-auto">
+                <img class="mx-auto" src="images/pet.webp" alt="">
+            </div>
+        </div>
+    </nav>
+<!-- main section started -->
+    <main class="mb-12" id="adopti-your-friend">
+        <div class="text-center space-y-6 mb-24">
+            <h3 class="font-extrabold text-5xl">Adopt Your Best Friend</h3>
+            <p class="font-light text-base">
+                It is a long established fact that a reader will be distracted by the readable content of a <br>page
+                when looking at its layout. The point of using Lorem Ipsum is that it has a.
+            </p>
+        </div>
+
+        <!-- category button container starts -->
+        <div class=" lg:flex flex-row ms-9 lg:space-y-0 space-y-8 w-10/12 lg:mx-auto justify-between mb-28" id="button-container">
+            <div class="flex items-center gap-2 cursor-pointer border px-12 py-4 rounded-full category-btn"
+                onclick="loadCategoriesByName('dog')" id="dog">
+                <img src="images/dog.png" alt="" width="50px" height="50px">
+                <p class="font-bold text-2xl">Dogs</p>
+            </div>
+
+            <div class="flex items-center gap-2 cursor-pointer border px-12 py-4 rounded-full category-btn active"
+                onclick="loadCategoriesByName('cat')" id="cat">
+                <img src="images/cat.png" alt="" width="50px" height="50px">
+                <p class="font-bold text-2xl">Cats</p>
+            </div>
+
+            <div class="flex items-center gap-2 cursor-pointer border px-10 py-4 rounded-full category-btn"
+                onclick="loadCategoriesByName('rabbit')" id="rabbit">
+                <img src="images/rabbit.png" alt="" width="50px" height="50px">
+                <p class="font-bold text-2xl">Rabbits</p>
+            </div>
+
+            <div class="flex items-center gap-2 cursor-pointer border px-12 py-4 rounded-full category-btn"
+                onclick="loadCategoriesByName('bird')" id="bird">
+                <img src="images/bird.png" alt="" width="50px" height="50px">
+                <p class="font-bold text-2xl">Birds</p>
+            </div>
+
+        </div>
+
+        <!-- sort by price section starts -->
+        <section class="mb-20 w-10/12 lg:flex flex-row ms-14 lg:mx-auto lg:space-y-0 space-y-6 justify-between items-center">
+            <h3 class="text-2xl font-extrabold">Best Deat For You</h3>
+            <button class="btn bg-teal-700 text-white" id="sortPriceBtn">Sort By Price</button>
+        </section>
+
+        <div id="spinner" class="text-center mb-6 justify-center items-center w-full hidden mt-12">
+            <span class="loading loading-bars loading-lg"></span>
+        </div>
+
+
+        <!-- card section -->
+        <section class=" lg:w-10/12 w-11/12 lg:mx-auto ms-16 lg:flex flex-row justify-center gap-10 mb-32" id="pet-container">
+            <div class="w-9/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-5 border rounded-xl"
+                id="pet-card-container">
+
+            </div>
+
+            <div class="lg:w-3/12 w-9/12 lg:mt-0 mt-8 border rounded-xl grid grid-cols-2 gap-y-0 p-4 gap-3" id="img-container">
+
+            </div>
+        </section>
+
+        <!-- modal -->
+        <button id="showModalData" class="btn hidden" onclick="customModal.showModal()">open modal</button>
+        <dialog id="customModal" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                <div id="modal-Content">
+
+                </div>
+
+                <div class="">
+                    <form method="dialog">
+                        <button class="py-2 rounded-xl text-teal-700 w-full active">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
+
+        <!-- Adoption Modal -->
+   
+        <button class="btn hidden" onclick="my_modal_5.showModal()">open modal</button>
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                
+                <div class="adopt-modal">
+
+                    <p id="counting"></p>
+                </div>
+
+                <div class="modal-action">
+                    <form method="dialog">
+                        
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
+
+    </main>
+
+    <!-- Footer section done -->
+    <footer class="bg-slate-900">
+        <div class=" text-neutral-content p-10 justify-between lg:w-10/12 w-full mx-auto lg:flex flex-row lg:space-y-0 space-y-8">
+            <div class="flex-col w-4/12 space-y-2">
+                <div class="flex gap-1 items-center mb-4">
+                    <span><img src="images/logo.webp" alt="" class="w-6 "></span>
+                    <a class="mx-2 text-2xl font-extrabold">Peddy</a>
+                </div>
+                <div class="text-sm"><a class="link link-hover">Location: av. Washington 165, NY CA </a></div>
+                <div class="text-sm"><a class="link link-hover">54003</a></div>
+                <div class="text-sm"><a class="link link-hover">Phone: +31 85 964 47 25</a></div>
+                <div class="text-sm"><a class="link link-hover">Email: info@yourdomain.com</a></div>
+                <div class="text-sm"><a class="link link-hover">Openings hours: 9.00 AM - 5.00 PM</a></div>
+                <div class="flex gap-3">
+                    <a href=""><img src="https://img.icons8.com/?size=48&id=uLWV5A9vXIPu&format=png" alt=""
+                            class="w-8"></a>
+                    <a href=""><img src="https://img.icons8.com/?size=48&id=ClbD5JTFM7FA&format=png" alt=""
+                            class="w-8"></a>
+                    <a href=""><img src="https://img.icons8.com/?size=48&id=19318&format=png" alt="" class="w-8"></a>
+                    <a href=""><img src="https://img.icons8.com/?size=48&id=Xy10Jcu1L2Su&format=png" alt=""
+                            class="w-8"></a>
+                </div>
+            </div>
+
+            <hr class="lg:hidden block">
+
+            <div class="flex justify-between lg:w-6/12 md:w-9/12 w-full">
+                <div class="space-y-2">
+                    <h6 class=" text-white mb-4 font-bold text-base">Useful Links</h6>
+                    <div class="text-sm"><a class="link link-hover">Home</a></div>
+                    <div class="text-sm"><a class="link link-hover">About us</a></div>
+                    <div class="text-sm"><a class="link link-hover">Animals</a></div>
+                    <div class="text-sm"><a class="link link-hover">Foundation</a></div>
+                    <div class="text-sm"><a class="link link-hover">Contact</a></div>
+                </div>
+
+                <div>
+                    <h6 class=" text-white mb-4 font-bold text-base">Drop a Message</h6>
+                    <div><input type="text" class="p-2 rounded-lg text-xs bg-slate-700 mb-4"
+                            placeholder="enter your email" /></div>
+                    <div><button class=" bg-teal-700 text-white px-10 rounded-lg py-1">Subscribe</button></div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    <script src="js/petCategories.js"></script>
+    <script src="js/utilities.js"></script>
+</body>
+
+</html>
